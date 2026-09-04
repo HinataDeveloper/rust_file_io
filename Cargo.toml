@@ -1,6 +1,9 @@
 [package]
-name = "rust_file_io"
+name = "rust-file-io"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+[[bin]]
+name = "rust-file-io"
+path = "src/main.rs"

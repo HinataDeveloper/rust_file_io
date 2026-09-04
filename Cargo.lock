@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "rust_file_io"
+name = "rust-file-io"
 version = "0.1.0"
