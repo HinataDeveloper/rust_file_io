@@ -1,7 +1,7 @@
 // Date: Thu Sep 04 2026
 
 // Project: Learning Chapter 13
-// Goal: Using File IO: 
+// Goal: Using File IO: Using file exist method
 // Dependency: Without dependency
 
 // rustc 1.100.0-nightly (5db7f4be8 2026-09-01)
@@ -25,8 +25,23 @@
 // Kernel Version: 7.1.12-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
 
+use std::fs;
+
 fn main() {
     println!("\n");
+
+    let result = fs::exists("temp.txt");
+    match result {
+        Ok(exist) => {
+            if exist {
+                println!("Yes, file exits ...");
+            } else {
+                println!("No, file not exist ...");
+            }
+        }
+
+        Err(err) => eprintln!("Error: {}", err),
+    }
 
     println!("\nThe End ...\n");
 }
