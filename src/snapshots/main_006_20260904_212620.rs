@@ -1,7 +1,7 @@
 // Date: Thu Sep 04 2026
 
 // Project: Learning Chapter 13
-// Goal: Using File IO:
+// Goal: Using File IO: Create file
 // Dependency: Without dependency
 
 // rustc 1.100.0-nightly (a69a63265 2026-09-03)
@@ -25,8 +25,26 @@
 // Kernel Version: 7.1.13-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
 
+use std::{fs, io::Write};
+
 fn main() {
     println!("\n");
+
+    let resultant = fs::File::create("/home/hinata/Raphael.txt");
+
+    let mut my_file = match resultant {
+        Ok(file) => file,
+        Err(err) => panic!("Error: {}", err),
+    };
+
+    println!("Raphael.txt was created successfully ...");
+
+    let buffer = String::from("I am a Rustacean ...");
+    let file_writing = my_file.write_all(buffer.as_bytes());
+    match file_writing {
+        Ok(_) => println!("write to file successfully ..."),
+        Err(err) => eprint!("Error: writing file operation was failed {} ...", err),
+    }
 
     println!("\nThe End ...\n");
 }
