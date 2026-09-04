@@ -1,7 +1,7 @@
 // Date: Thu Sep 04 2026
 
 // Project: Learning Chapter 13
-// Goal: Using File IO: Creating directory
+// Goal: Using File IO:
 // Dependency: Without dependency
 
 // rustc 1.100.0-nightly (a69a63265 2026-09-03)
