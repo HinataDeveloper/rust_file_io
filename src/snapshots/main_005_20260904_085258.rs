@@ -1,7 +1,7 @@
 // Date: Thu Sep 04 2026
 
 // Project: Learning Chapter 13
-// Goal: Using File IO:
+// Goal: Using File IO: Remove directory
 // Dependency: Without dependency
 
 // rustc 1.100.0-nightly (a69a63265 2026-09-03)
@@ -25,8 +25,16 @@
 // Kernel Version: 7.1.12-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
 
+use std::fs;
+
 fn main() {
     println!("\n");
+
+    let resultant = fs::remove_dir("/home/hinata/Raphael");
+    match resultant {
+        Ok(_) => println!("Directory was removed successfully ..."),
+        Err(err) => eprintln!("Error: {}", err),
+    }
 
     println!("\nThe End ...\n");
 }
