@@ -1,7 +1,7 @@
-// Date: Thu Sep 03 2026
+// Date: Thu Sep 04 2026
 
 // Project: Learning Chapter 13
-// Goal: Using Interator
+// Goal: Using File IO: Rename file
 // Dependency: Without dependency
 
 // rustc 1.100.0-nightly (5db7f4be8 2026-09-01)
@@ -25,8 +25,19 @@
 // Kernel Version: 7.1.12-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
 
+use std::fs;
+
 fn main() {
     println!("\n");
 
-    println!("\nThe End ...\n");
+    let source_file = "raphael.txt";
+    let destination_file = "temp.txt";
+
+    let result = fs::rename(source_file, destination_file);
+    match result {
+        Ok(_) => println!("file was renamed successfully ..."),
+        Err(err) => eprintln!("Error: {}", err),
+    }
+
+    println!("\nThe End ...\n")
 }
