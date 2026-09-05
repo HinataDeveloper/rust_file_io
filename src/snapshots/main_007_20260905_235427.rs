@@ -1,7 +1,7 @@
 // Date: Thu Sep 05 2026
 
 // Project: Learning Chapter 13
-// Goal: Using File IO:
+// Goal: Using File IO: Read a directory contents
 // Dependency: Without dependency
 
 // rustc 1.100.0-nightly (0ed41eb41 2026-09-04)
@@ -25,8 +25,33 @@
 // Kernel Version: 7.1.13-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
 
+use std::fs::{self, DirEntry};
+use std::io;
+
 fn main() {
     println!("\n");
+
+    let dir_mem = fs::read_dir("/home/hinata/test");
+    let read_dir = match dir_mem {
+        Ok(rd) => rd,
+        Err(err) => panic!(" -->> An error occurred: {}", err),
+    };
+
+    let file_coll: Vec<Result<DirEntry, io::Error>> = read_dir.collect();
+    let one: &Result<DirEntry, io::Error> = &file_coll[0];
+    let dir_name = match one {
+        Ok(de) => de,
+        Err(err) => panic!("Error: {}", err),
+    };
+
+    // let file_type = dir_name.file_type();
+    let path = dir_name.path().into_string();
+    let path_name = match path {
+        Ok(pn) => pn,
+        Err(err) => panic!("Error: {:?}", err),
+    };
+
+    println!("first element is: {}", path_name);
 
     println!("\nThe End ...\n");
 }
