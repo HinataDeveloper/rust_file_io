@@ -1,21 +1,21 @@
 // Date: Thu Sep 07 2026
 
 // Project: Learning Chapter 13
-// Goal: Using File IO:
+// Goal: Using File IO: Using BufReader
 // Dependency: Without dependency
 
-// rustc 1.100.0-nightly (0ed41eb41 2026-09-04)
+// rustc 1.100.0-nightly (f248f4038 2026-09-05)
 // binary: rustc
-// commit-hash: 0ed41eb4142dda2df61eb1145a312c1a9d62eb56
-// commit-date: 2026-09-04
+// commit-hash: f248f4038796913873f11ca65b1b901e311c8dae
+// commit-date: 2026-09-05
 // host: x86_64-unknown-linux-gnu
 // release: 1.100.0-nightly
 // LLVM version: 23.1.1
 
-// cargo 1.100.0-nightly (b2e9d5f9d 2026-09-02)
+// cargo 1.100.0-nightly (3c0b53475 2026-09-04)
 // release: 1.100.0-nightly
-// commit-hash: b2e9d5f9db3fb1c454ab84f10c16508984a266e2
-// commit-date: 2026-09-02
+// commit-hash: 3c0b534756e166d12eb9fd2e1abfe5b42ac6101e
+// commit-date: 2026-09-04
 // host: x86_64-unknown-linux-gnu
 // libgit2: 1.9.6 (sys:0.21.0 vendored)
 // libcurl: 8.21.0-DEV (sys:0.4.90+curl-8.21.0 vendored ssl:OpenSSL/3.6.3)
