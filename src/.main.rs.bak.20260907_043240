@@ -1,7 +1,7 @@
 // Date: Thu Sep 07 2026
 
 // Project: Learning Chapter 13
-// Goal: Using File IO:
+// Goal: Using File IO: Using BufReader
 // Dependency: Without dependency
 
 // rustc 1.100.0-nightly (0ed41eb41 2026-09-04)
@@ -25,8 +25,22 @@
 // Kernel Version: 7.1.13-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
 
-fn main() {
+use std::fs::File;
+use std::io::{self, BufRead, BufReader};
+
+fn main() -> io::Result<()> {
     println!("\n");
 
+    const PATH_NAME: &str = "/home/hinata/test/temp.txt";
+
+    let my_file: File = File::open(PATH_NAME)?;
+    let buffer_reader: BufReader<File> = io::BufReader::new(my_file);
+
+    for (index, line_result) in buffer_reader.lines().enumerate() {
+        let line = line_result?;
+        println!("line:{} -> {}", index + 1, line);
+    }
+
     println!("\nThe End ...\n");
+    Ok(())
 }
