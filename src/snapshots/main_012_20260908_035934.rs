@@ -25,8 +25,35 @@
 // Kernel Version: 7.1.13-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
 
-fn main() {
+use std::error::Error;
+use std::fs::File;
+use std::io::{self, BufRead};
+
+fn main() -> Result<(), Box<dyn Error>> {
     println!("\n");
 
+    // Specify required buffer for BufReader
+    const TEMP_BUF: usize = 64 * 1024;
+
+    const PATH_NAME: &str = "/home/hinata/test/temp.txt";
+    let target_file: File = File::open(PATH_NAME)?;
+
+    let mut middle_buffer: String = String::new();
+
+    // Using custom buffer
+    let mut buffer_reader: io::BufReader<File> =
+        io::BufReader::with_capacity(TEMP_BUF, target_file);
+
+    loop {
+        middle_buffer.clear();
+
+        let how_much_byte: usize = buffer_reader.read_line(&mut middle_buffer)?;
+        if how_much_byte == 0 {
+            break;
+        }
+        println!(" ->> {}", middle_buffer);
+    }
+
     println!("\nThe End ...\n");
+    Ok(())
 }
